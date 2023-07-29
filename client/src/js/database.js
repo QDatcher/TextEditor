@@ -25,9 +25,10 @@ export const putDb = async (id, content) => {
   // Open up the desired object store.
   const store = tx.objectStore('contact');
 
-  const existingContent = await store.get(id)
+  let existingContent = await store.get(id)
 
   if(existingContent){
+    // existingContent = content
     await store.put(content)
     console.log('Record has been updated')
   } else {
